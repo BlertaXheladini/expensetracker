@@ -1,5 +1,8 @@
 import React from 'react';
 import image from "../../assets/images/image.png";
+import {LuTrendingUpDown} from "react-icons/lu";
+
+
 
 const AuthLayout = ({ children }) => {
   return (
@@ -14,9 +17,31 @@ const AuthLayout = ({ children }) => {
         <div className="w-48 h-56 rounded-[40px] border-[20px] border-fuchsia-600 absolute top-[30%] right-10" />
         <div className="w-48 h-48 rounded-[40px] bg-violet-500 absolute -bottom-7 -left-5" />
         <img src={image} className="w-64 lg:w-[90%] absolute bottom-10 shadow-lf shadow-blue-400/15" />
+      
+      <div className='grid grid-color-1 z-20'>
+        <StatsInfoCard
+        icon={<LuTrendingUpDown/>}
+        value="430,000"
+        color="bg-primary"
+        />
+
+      </div>
       </div>
     </div>
   );
 };
 
 export default AuthLayout;
+const StatsInfoCard = ({ icon, label, value, color }) => {
+  return (
+    <div className="flex gap-4 items-center bg-white p-4 rounded-xl shadow-md shadow-purple-400/10 border border-gray-200/50">
+      <div className={`w-12 h-12 flex items-center justify-center text-[26px] text-white ${color} rounded-full drop-shadow-xl`}>
+        {icon}
+      </div>
+      <div>
+        <h6 className="text-xs text-gray-500 mb-1">{label}</h6>
+        <span className="text-[20px] font-semibold">${value}</span>
+      </div>
+    </div>
+  );
+};
